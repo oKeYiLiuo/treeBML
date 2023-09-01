@@ -9,9 +9,9 @@ the number of bootstrappings and Key Switching required for the TreeFB algorithm
 
 we propose a new TLWE-to-TRLWE Packing Key Switching algorithm that reduces the key-switching key size of the Base-aware-KS. We have observed 
 that it is necessary to generate key-switching key ciphertexts of polynomials with the same non-zero coefficient values but only those values located
-in different slots in the Base-aware-KS algorithm. Therefore, for these keyswitching key ciphertexts, we only generate one ciphertext and perform homomorphic 
+in different slots in the Base-aware-KS algorithm. Therefore, for these key-switching key ciphertexts, we only generate one ciphertext and perform homomorphic 
 rotation operations when needed, which effectively reducing theciphertext size of the key-switching key. 
-We call it the Base-rotate TLWEto-TRLWE Packing Key Switching(Rotate-based KS) algorithm.
+We call it the Base-rotate TLWE-to-TRLWE Packing Key Switching(Rotate-based KS) algorithm.
   
 We analyze the error variance and rate of our Tree-BML algorithm and
 Rotate-based KS algorithm and compare with others. The Tree-BML and
