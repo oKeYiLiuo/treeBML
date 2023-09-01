@@ -2,13 +2,13 @@ This is a public code of my paper:
     Optimization of Functional Bootstraps with Large LUT and Packing Key Switching
 which published on EAI SecureComm 2023.
 
-We speed up the calculation of FBT with large LUT or highly precise functions in fully homomorphic setting by optimizing the TreeFB algorithm.
+We speed up the calculation of FBT with large LUT or highly precise functions in fully homomorphic setting by optimizing the TreeFB algorithm.
 We accelerate the calculation of TreeFB by compressing 2^ϑ· B instead of B TLWE ciphertext into one TRLWE ciphertext after the first layer in TreeFB.
 Therefore, we can extract the 2^ϑ instead of one samples required for the next layer in only one bootstrapping by using the BML algorithm. So we reduce
 the number of bootstrappings and Key Switching required for the TreeFB algorithm and without adding the error variance of output. We call it TreeBML algorithm.
 
 we propose a new TLWE-to-TRLWE Packing Key Switching algorithm that reduces the key-switching key size of the Base-aware-KS. We have observed 
-that it is necessary to generate key-switching key ciphertexts of polynomials with the same non-zero coefficient values but only those values located
+that it is necessary to generate key-switching key ciphertexts of polynomials with the same non-zero coefficient values but only those values located
 in different slots in the Base-aware-KS algorithm. Therefore, for these keyswitching key ciphertexts, we only generate one ciphertext and perform homomorphic 
 rotation operations when needed, which effectively reducing theciphertext size of the key-switching key. 
 We call it the Base-rotate TLWEto-TRLWE Packing Key Switching(Rotate-based KS) algorithm.
