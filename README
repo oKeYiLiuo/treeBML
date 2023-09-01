@@ -2,51 +2,24 @@ This is a public code of my paper:
     Optimization of Functional Bootstraps with Large LUT and Packing Key Switching
 which published on EAI SecureComm 2023.
 
-\item We speed up the calculation of FBT with large LUT or highly precise functions in fully homomorphic setting by optimizing the TreeFB algorithm.
-  We accelerate the calculation of TreeFB by compressing $2^\vartheta \cdot B$ instead of $B$ TLWE ciphertext 
-  into one TRLWE ciphertext after the first layer in TreeFB.
-  %so that using the BML algorithm.
-  Therefore, we can extract the $2^\vartheta$ instead of one samples required for the next layer in only one bootstrapping
-  by using the BML algorithm.
-  So we reduce the number of bootstrappings and Key Switching required for the TreeFB algorithm %in each layer
-  and without adding the error variance of output.
-  % through theoretical analysis.
-  We call it Tree-BML algorithm.
- % Finally, we provided concrete experimental results with different parameters, 
- % which reduced the calculation time of LUT and Relu function by 51.2\% when $\vartheta=1$, and 72.09\% when $\vartheta=2$, and 79.66\% when $\vartheta=3$. 
+We speed up the calculation of FBT with large LUT or highly precise functions in fully homomorphic setting by optimizing the TreeFB algorithm.
+We accelerate the calculation of TreeFB by compressing 2^ϑ· B instead of B TLWE ciphertext into one TRLWE ciphertext after the first layer in TreeFB.
+Therefore, we can extract the 2^ϑ instead of one samples required for the next layer in only one bootstrapping by using the BML algorithm. So we reduce
+the number of bootstrappings and Key Switching required for the TreeFB algorithm and without adding the error variance of output. We call it TreeBML algorithm.
 
-  %and without having to choose between circuit bootstrapping and multiple bootstrappings. 
-  %In order to minimizes the number of Bootstraps required by the algorithm, when the number of TLWE ciphertexts needs to be 
-  %packaged $K\cdot B<2^\vartheta\cdot B$, we change the local $\vartheta$ value and execute the dynamic PBSmanyLUT by high-positions filling $0$. 
+we propose a new TLWE-to-TRLWE Packing Key Switching algorithm that reduces the key-switching key size of the Base-aware-KS. We have observed 
+that it is necessary to generate key-switching key ciphertexts of polynomials with the same non-zero coefficient values but only those values located
+in different slots in the Base-aware-KS algorithm. Therefore, for these keyswitching key ciphertexts, we only generate one ciphertext and perform homomorphic 
+rotation operations when needed, which effectively reducing theciphertext size of the key-switching key. 
+We call it the Base-rotate TLWEto-TRLWE Packing Key Switching(Rotate-based KS) algorithm.
   
-  \item We propose a new TLWE-to-TRLWE Packing Key Switching algorithm that reduces the key-switching key size of the Base-aware-KS.
-  We have observed that it is necessary to generate key-switching key ciphertexts of polynomials with the same non-zero coefficient values 
-  but only those values located in different slots
-  %(such as $KS_i^{(e)}=TRLWE(S_i\cdot (X^{(e-1)\cdot N/B}+ \dots +X^{e \cdot N/B-1})),e\in \llbracket 1, B \rrbracket$) 
-  in the Base-aware-KS algorithm. 
-  Therefore, for these key-switching key ciphertexts, 
-  we only generate one ciphertext
-  %(such as $KS_i=TRLWE(S_i\cdot (1+ X+\dots +X^{N/B -1}))$) 
-  and perform homomorphic rotation operations
-  %(such as $X^{N/B} \cdot KS_i$)
-  when needed, which effectively reducing the ciphertext size of the key-switching key.
-  We call it the Base-rotate TLWE-to-TRLWE Packing Key Switching(Rotate-based KS) algorithm.
-  %And we through theoretical analysis found that the optimized TLWE-to-TRLWE packing key switching algorithm we proposed 
-  %did not increase the error variance.
- % Finally, we conducted concrete experimental in the 32-bit integer comparison algorithm, 
- % our Rotate-based KS algorithm can reduce the key-switching key size by 75\% compare to Base-aware-KS and almost no increasing the algorithm's runtime.
-  %In actual homomorphic encryption applications, such as cloud computing, key-switching key needs to be transmitted from the client to the cloud server. 
-  %Therefore, the reduction of the key-switching key size can not only reduce the storage space required by the algorithm but also reduce the communication overhead.
-
-  \item %Finally, due to Antonio Guimarães et al. only providing the error variance at each functional Bootstrapping and Base-aware TLWE-to-TRLWE Key Switching
-  %in the TreeFB algorithm, they did not provide a error variance result for an input $m\in B^d$ after complete algorithm calculated. 
-  We analyze the error variance and rate of our Tree-BML algorithm and Rotate-based KS algorithm %through theoretical, 
-  %and the error variance of the final calculation results of the TreeFB algorithm, 
-  and compare with others.
-  %We found that 
-  The Tree-BML and Rotate-based KS algorithm does not add error variance of output.
-  We verify our conclusion about error variance and rate through experiment.
-  We also experiment for different functions, such as LUT, 32-bit integer comparison and Relu,
-  and compared the performance results of our algorithms with existing algorithms.
-  Our Tree-BML algorithm reduce the running time of the TreeFB algorithm by $72.09\%$ %when $\vartheta = 2$
-  and Rotate-based KS algorithm reduce the key-switching key size of Base-aware-KS by $75\%$.
+We analyze the error variance and rate of our Tree-BML algorithm and
+Rotate-based KS algorithm and compare with others. The Tree-BML and
+Rotate-based KS algorithm does not add error variance of output. We verify
+our conclusion about error variance and rate through experiment. We also
+experiment for various functions with different parameters setting, such as
+LUT, 32-bit integer comparison and Relu, and compared the performance
+results of our algorithms with existing algorithms. Our Tree-BML algorithm
+reduce the running time of the TreeFB algorithm by 72.09% when ϑ = 2 and
+torus base B = 4. Our Rotate-based KS algorithm reduce the key-switching
+key size of Base-aware-KS by 75%
