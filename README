@@ -1,6 +1,7 @@
 This is a public code of my paper:
     Optimization of Functional Bootstraps with Large LUT and Packing Key Switching
 which published on EAI SecureComm 2023.
+And others are my M.S. dissertation which title is "Research on Optimization of Fully Homomorphic Encryption and Parallel Computing Acceleration".
 
 We speed up the calculation of FBT with large LUT or highly precise functions in fully homomorphic setting by optimizing the TreeFB algorithm.
 We accelerate the calculation of TreeFB by compressing 2^ϑ· B instead of B TLWE ciphertext into one TRLWE ciphertext after the first layer in TreeFB.
@@ -23,3 +24,5 @@ results of our algorithms with existing algorithms. Our Tree-BML algorithm
 reduce the running time of the TreeFB algorithm by 72.09% when ϑ = 2 and
 torus base B = 4. Our Rotate-based KS algorithm reduce the key-switching
 key size of Base-aware-KS by 75%
+
+
